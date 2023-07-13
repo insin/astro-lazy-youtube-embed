@@ -1,8 +1,8 @@
 ---
 export interface Props {
-	class?: string
-	title: string
-	videoCode: string
+  class?: string
+  title: string
+  videoCode: string
 }
 
 let {class: className, title, videoCode} = Astro.props
@@ -12,11 +12,11 @@ let srcdoc = `<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}
 ---
 <iframe
   class={className}
-	style="width: 100%; aspect-ratio: 16/9;"
-	src={`https://www.youtube.com/embed/${videoCode}`}
-	title={title}
-	srcdoc={srcdoc}
-	frameborder="0"
-	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-	allowfullscreen
-></iframe>
+  style="width: 100%; aspect-ratio: 16/9;"
+  src={`https://www.youtube.com/embed/${videoCode}`}
+  title={title}
+  srcdoc={srcdoc}
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+/>
