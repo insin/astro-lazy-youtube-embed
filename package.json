@@ -1,0 +1,30 @@
+{
+  "name": "astro-lazy-youtube-embed",
+  "version": "0.0.1",
+  "description": "Embed YouTube videos with a static placeholder which only embeds when you click",
+  "type": "module",
+  "license": "MIT",
+  "author": "Jonny Buchanan <jonathan.buchanan@gmail.com>",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "LICENSE",
+    "YouTubeVideo.astro"
+  ],
+  "keywords": [
+    "astro",
+    "astro-component",
+    "lazy",
+    "youtube",
+    "embed"
+  ],
+  "peerDependencies": {
+    "astro": "^1.0.0 || ^2.0.0-beta"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insin/astro-lazy-youtube-embed.git"
+  }
+}
