@@ -1,8 +1,6 @@
 # Astro Lazy YouTube Embed
 
-Embed YouTube videos with a static placeholder which only embeds when you click.
-
-This component uses [an `<iframe>` with a `srcdoc` attribute to provide a static placeholder](https://css-tricks.com/lazy-load-embedded-youtube-videos/), which mimics the style of a real YouTube embed (at the time of writing).
+Lazily embed YouTube videos with a [static placeholder using the `<iframe>` `srcdoc` attribute](https://css-tricks.com/lazy-load-embedded-youtube-videos/), which looks like the YouTube embed (at the the time of writing) but doesn't actually embed until you click.
 
 ## Install
 
