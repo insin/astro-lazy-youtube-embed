@@ -8,23 +8,38 @@ Lazily embed YouTube videos with a [static placeholder using the `<iframe>` `src
 npm i astro-lazy-youtube-embed
 ```
 
-## Example
+## Usage
 
-This component uses a `default` export, so you can import it as whichever name you prefer:
+Use `embedParams` to pass [YouTube IFrame Player API parameters](https://developers.google.com/youtube/player_parameters#Parameters) for the embed, e.g. to set start & stop times to play a particular section when clicked.
+
+Use `thumbnailRes` to control the resolution of the thumbnail used for the placeholder.
 
 ```astro
 ---
-import YouTubeVideo from 'astro-lazy-youtube-embed'
+import {YouTube} from 'astro-lazy-youtube-embed'
 ---
-<YouTubeVideo videoCode="FfTT7mxGw8I" title="Just Curious - Limmy's Homemade Show"/>
+<YouTube
+  title="Just Curious - Limmy's Homemade Show"
+  videoId="FfTT7mxGw8I"
+/>
 
-<div class="my-8">Provide your own class for additional styling:</div>
+<div class="my-8">Configure the embed features and thumbnail size:</div>
 
-<YouTubeVideo
-  class="rounded"
-  videoCode="L0C5nyOVTzc"
+<YouTube
+  embedParams={{start: 19, end: 22}}
+  thumbnailRes="maxres"
+  title="Frimmerang"
+  videoId="xptCWoB_VCE"
+/>
+
+<div class="my-8">Pass other HTML attributes for the <code>&lt;iframe&gt;</code>:</div>
+
+<YouTube
+  class="rounded-2xl"
+  id="techno"
   title="Limmy Teaches Techno - Limmy's Homemade Show"
+  videoId="L0C5nyOVTzc"
 />
 ```
 
-![Rendered version of the above example code](/example.jpg)
+![Rendered version of the above example code](./example.jpg)
