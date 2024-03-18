@@ -1,10 +1,41 @@
 ---
-interface Props extends astroHTML.JSX.IframeHTMLAttributes {
+interface Props extends Omit<astroHTML.JSX.IframeHTMLAttributes, 'src' | 'srcdoc'> {
+  /**
+   * Pass `true` to embed using `www.youtube.com` instead of `www.youtube-nocookie.com`
+   */
   cookie?: boolean
+  /**
+   * YouTube IFrame Player API parameters
+   *
+   * Defaults to `{autoplay: 1}`, additional parameters will be merged into the defaults
+   * @see https://developers.google.com/youtube/player_parameters#Parameters
+   */
   embedParams?: EmbedParams
+  /**
+   * `loading` attribute for the thumbnail `<img>`
+   *
+   * Defaults to `"lazy"`
+   */
+  loading?: 'eager' | 'lazy'
+  /**
+   * Thumbnail image to use in the static embed
+   *
+   * Defaults to `"default"`, pass 1, 2 or 3 to use a screenshot from the video instead.
+   */
   thumbnail?: Thumbnail
+  /**
+   * Thumbnail resolution
+   *
+   * Defaults to `"sd"` (640x480)
+   */
   thumbnailRes?: ThumbnailRes
+  /**
+   * Title for the static embed
+   */
   title: string
+  /**
+   * 11-digit YouTube video id
+   */
   videoId: string
 }
 
@@ -77,13 +108,13 @@ let style = `<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%;b
 let srcdoc = `${style}<a href="${embedUrl}"><img src="${thumbnailUrl}" alt="${title}" loading="${loading}"><div class="gradient"></div><div class="top"><div class="title">${title}</div></div><div class="button">${playButtonSvg}</div></a>`
 ---
 <iframe
+  loading={loading}
+  src={embedUrl}
+  srcdoc={srcdoc}
+  title={title}
+  {...iframeAttributes}
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen
   frameborder="0"
-  loading={loading}
   style="width: 100%; aspect-ratio: 16/9;"
-  title={title}
-  {...iframeAttributes}
-  src={embedUrl}
-  srcdoc={srcdoc}
 />
