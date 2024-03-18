@@ -21,6 +21,7 @@ interface EmbedParams {
   list?: string
   listType?: 'playlist' | 'user_uploads'
   loop?: ToggleParam
+  /** @deprecated has no effect, deprecated by YouTube on August 15 2023 */
   modestbranding?: ToggleParam
   origin?: string
   playlist?: string
@@ -55,7 +56,7 @@ let {
   ...attrs
 } = Astro.props as Props
 
-let params: EmbedParams = {...{autoplay: 1, modestbranding: 1}, ...embedParams}
+let params: EmbedParams = {autoplay: 1, ...embedParams}
 
 let thumbnailUrl = `https://img.youtube.com/vi/${videoId}/${QUALITY_PREFIXES[thumbnailRes]}default.jpg`
 let embedQuery = Object.keys(params).map(key => `${key}=${params[key]}`).join('&')

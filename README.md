@@ -12,6 +12,15 @@ npm i astro-lazy-youtube-embed
 
 Use `embedParams` to pass [YouTube IFrame Player API parameters](https://developers.google.com/youtube/player_parameters#Parameters) for the embed, e.g. to set start & stop times to play a particular section when clicked.
 
+Default `embedParams` are:
+
+```js
+{
+  // automatically start to play when the player loads
+  autoplay: 1,
+}
+```
+
 Use `thumbnailRes` to control the resolution of the thumbnail used for the placeholder.
 
 ```astro
