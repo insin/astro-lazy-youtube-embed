@@ -35,6 +35,16 @@ Default `embedParams` are:
 }
 ```
 
+### Privacy
+
+Videos are embedded using `www.youtube-nocookie.com/embed` by default. This is YouTube's "[privacy-enhanced mode](https://support.google.com/youtube/answer/171780?hl=en#zippy=%2Cturn-on-privacy-enhanced-mode)" URL, which prevents embedded videos from affecting a user's watch history if they're logged in to YouTube.
+
+To embed using `www.youtube.com/embed` instead, pass a `cookie` flag:
+
+```astro
+<YouTube cookie ... />
+```
+
 ### Example
 
 ```astro
