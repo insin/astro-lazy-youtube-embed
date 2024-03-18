@@ -10,6 +10,20 @@ npm i astro-lazy-youtube-embed
 
 ## Usage
 
+### Thumbnails
+
+Use `thumbnailRes` to control the resolution of the thumbnail used for the placeholder - you can pass the resolution (120, 320, 480, 640, or 1280), or one of the names YouTube maps resolutions to (default, medium/mq, high/hq, standard/sd, or maxres).
+
+> [!CAUTION]
+> Not all videos will have higher resolution thumbnails available, especially older videos - check if the thumbnail is available when using higher resolutions.
+
+Use `thumbnail` (1, 2, or 3) to use one of the 3 alternate thumbnails YouTube provides as the placeholder - these are screenshots from the video itself.
+
+> [!NOTE]
+> Some older videos will have higher resolution thumbnails available for their alternate thumbnails than for the default thumbnail.
+
+### Player parameters
+
 Use `embedParams` to pass [YouTube IFrame Player API parameters](https://developers.google.com/youtube/player_parameters#Parameters) for the embed, e.g. to set start & stop times to play a particular section when clicked.
 
 Default `embedParams` are:
@@ -21,7 +35,7 @@ Default `embedParams` are:
 }
 ```
 
-Use `thumbnailRes` to control the resolution of the thumbnail used for the placeholder.
+### Example
 
 ```astro
 ---
