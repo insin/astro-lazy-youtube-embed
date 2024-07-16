@@ -45,6 +45,12 @@ To embed using `www.youtube.com/embed` instead, pass a `cookie` flag:
 <YouTube cookie ... />
 ```
 
+### "Watch on YouTube" link
+
+The "Watch on YouTube" link from the YouTube embed is recreated, as some users prefer not to watch embedded videos, or to use the link to [download the video](https://github.com/yt-dlp/yt-dlp#readme) instead.
+
+If you want to omit this link (saving ~3.9 KB per video), pass a `noLink` param.
+
 ### Example
 
 ```astro
