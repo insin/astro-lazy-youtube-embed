@@ -10,17 +10,32 @@ npm i astro-lazy-youtube-embed
 
 ## Usage
 
-### Thumbnails
+The `title` and `videoId` params are required:
 
-Use `thumbnailRes` to control the resolution of the thumbnail used for the placeholder - you can pass the resolution (120, 320, 480, 640, or 1280), or one of the names YouTube maps resolutions to (default, medium/mq, high/hq, standard/sd, or maxres).
+```astro
+<YouTube
+  title="Just Curious - Limmy's Homemade Show"
+  videoId="FfTT7mxGw8I"
+/>
+```
+
+### YouTube thumbnails
+
+By default, embeds use the default YouTube thumbnail for the video at `sd` (640px) resolution.
+
+Use `thumbnailRes` to control the resolution of the YouTube thumbnail used for the placeholder - you can pass the resolution (120, 320, 480, 640, or 1280), or one of the names YouTube maps resolutions to (default, medium/mq, high/hq, standard/sd, or maxres).
 
 > [!CAUTION]
 > Not all videos will have higher resolution thumbnails available, especially older videos - check if the thumbnail is available when using higher resolutions.
 
-Use `thumbnail` (1, 2, or 3) to use one of the 3 alternate thumbnails YouTube provides as the placeholder - these are screenshots from the video itself.
+Pass 1, 2, or 3 as a `thumbnail` param to use one of the 3 alternate thumbnails YouTube provides as the placeholder - these are screenshots from the video itself.
 
 > [!NOTE]
 > Some older videos will have higher resolution thumbnails available for their alternate thumbnails than for the default thumbnail.
+
+### Custom thumbnails
+
+To use a custom thumbnail, pass a URL as the `thumbnail` param.
 
 ### Player parameters
 
@@ -37,7 +52,7 @@ Default `embedParams` are:
 
 ### Privacy
 
-Videos are embedded using `www.youtube-nocookie.com/embed` by default. This is YouTube's "[privacy-enhanced mode](https://support.google.com/youtube/answer/171780?hl=en#zippy=%2Cturn-on-privacy-enhanced-mode)" URL, which prevents embedded videos from affecting a user's watch history if they're logged in to YouTube.
+Videos are embedded using `www.youtube-nocookie.com/embed` by default. This is YouTube's "[privacy-enhanced mode](https://support.google.com/youtube/answer/171780?hl=en#zippy=%2Cturn-on-privacy-enhanced-mode)" (🧂🤏) URL, which prevents embedded videos from affecting a user's watch history if they're logged in to YouTube.
 
 To embed using `www.youtube.com/embed` instead, pass a `cookie` flag:
 
@@ -51,7 +66,7 @@ The "Watch on YouTube" link from the YouTube embed is recreated, as some users p
 
 If you want to omit this link (saving ~3.9 KB per video), pass a `noLink` param.
 
-### Example
+### Examples
 
 ```astro
 ---
