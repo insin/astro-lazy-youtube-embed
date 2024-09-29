@@ -1,6 +1,6 @@
 {
   "name": "astro-lazy-youtube-embed",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Embed YouTube videos with a static placeholder which only embeds when you click",
   "type": "module",
   "license": "MIT",
