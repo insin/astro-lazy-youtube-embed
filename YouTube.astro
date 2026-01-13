@@ -1,5 +1,5 @@
 ---
-interface Props extends Omit<astroHTML.JSX.IframeHTMLAttributes, 'src' | 'srcdoc'> {
+export interface Props extends Omit<astroHTML.JSX.IframeHTMLAttributes, 'src' | 'srcdoc'> {
   /**
    * Pass `true` to embed using `www.youtube.com` instead of `www.youtube-nocookie.com`
    */
@@ -43,7 +43,7 @@ interface Props extends Omit<astroHTML.JSX.IframeHTMLAttributes, 'src' | 'srcdoc
   videoId: string
 }
 
-interface EmbedParams {
+export type EmbedParams = {
   autoplay?: ToggleParam
   cc_lang_pref?: string
   cc_load_policy?: ToggleParam
@@ -68,11 +68,11 @@ interface EmbedParams {
   widget_referrer?: string
 }
 
-type ToggleParam = 0 | '0' | 1 | '1'
+export type ToggleParam = 0 | '0' | 1 | '1'
 
-type Thumbnail = 'default' | 1 | '1' | 2 | '2' | 3 | '3' | string
+export type Thumbnail = 'default' | 1 | '1' | 2 | '2' | 3 | '3' | string
 
-type ThumbnailRes = 120 | '120' | 'default' | 320 | '320' | 'medium' | 'mq' | 480 | '480' | 'high' | 'hq' | 640 | '640' | 'standard' | 'sd' | 1280 | '1280' | 'maxres'
+export type ThumbnailRes = 120 | '120' | 'default' | 320 | '320' | 'medium' | 'mq' | 480 | '480' | 'high' | 'hq' | 640 | '640' | 'standard' | 'sd' | 1280 | '1280' | 'maxres'
 
 const QUALITY_PREFIXES = {
   120: '',
@@ -88,7 +88,7 @@ const QUALITY_PREFIXES = {
   sd: 'sd',
   1280: 'maxres',
   maxres: 'maxres',
-}
+} as const
 
 let {
   cookie = false,
