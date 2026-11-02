@@ -64,7 +64,29 @@ To embed using `www.youtube.com/embed` instead, pass a `cookie` flag:
 
 The "Watch on YouTube" link from the YouTube embed is recreated, as some users prefer not to watch embedded videos, or to use the link to [download the video](https://github.com/yt-dlp/yt-dlp#readme) instead.
 
-If you want to omit this link (saving ~3 KB per video), pass a `noLink` param.
+If you want to omit this link (saving ~3.4 KB of HTML per video, or ~1.4 KB gzipped), pass a `noLink` param.
+
+### Copy link button
+
+Pass `copyLink` to emulate the YouTube embed's copy link button:
+
+```astro
+<YouTube copyLink title="Just Curious - Limmy's Homemade Show" videoId="FfTT7mxGw8I" />
+```
+
+This adds ~2 KB of HTML per video (~0.75 KB gzipped), including the icon, styles, and script. Compressed sizes depend on the rest of the page.
+
+The copied URL includes the start time from `embedParams.start`, if provided. `copyLink` works independently of `noLink` and is ignored when `legacy` is enabled.
+
+### Legacy placeholder
+
+The default placeholder recreates the current YouTube embed.
+
+Pass `legacy` to use YouTube's previous embed style:
+
+```astro
+<YouTube legacy title="Just Curious - Limmy's Homemade Show" videoId="FfTT7mxGw8I" />
+```
 
 ### Examples
 
@@ -72,22 +94,30 @@ If you want to omit this link (saving ~3 KB per video), pass a `noLink` param.
 ---
 import {YouTube} from 'astro-lazy-youtube-embed'
 ---
+
+<h2>Minimum required options</h2>
 <YouTube
   title="Just Curious - Limmy's Homemade Show"
   videoId="FfTT7mxGw8I"
 />
 
-<div class="my-8">Configure the embed features and thumbnail size:</div>
-
+<h2>Copy link button</h2>
 <YouTube
-  embedParams={{start: 19, end: 22}}
-  thumbnailRes="maxres"
-  title="Frimmerang"
-  videoId="xptCWoB_VCE"
+  copyLink
+  title="Just Curious - Limmy's Homemade Show"
+  videoId="FfTT7mxGw8I"
 />
 
-<div class="my-8">Pass other HTML attributes for the <code>&lt;iframe&gt;</code>:</div>
+<h2>Thumbnail and player options</h2>
+<YouTube
+  title="Frimmerang"
+  videoId="xptCWoB_VCE"
+  thumbnailRes="maxres"
+  thumbnail="3"
+  embedParams={{start: 19, end: 22}}
+/>
 
+<h2>Other HTML attributes</h2>
 <YouTube
   class="rounded-2xl"
   id="techno"
@@ -96,4 +126,4 @@ import {YouTube} from 'astro-lazy-youtube-embed'
 />
 ```
 
-![Rendered version of the above example code](./example.jpg)
+![Rendering of the above example code](./example.jpg)
