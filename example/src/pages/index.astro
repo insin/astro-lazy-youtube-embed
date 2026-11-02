@@ -1,0 +1,138 @@
+---
+import type {$brand, $input} from 'astro:schema'
+import YouTube from '../../../YouTube.astro'
+
+const video = {
+  title: "Just Curious - Limmy's Homemade Show",
+  videoId: 'FfTT7mxGw8I',
+}
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Astro Lazy YouTube Embed examples</title>
+  </head>
+  <body>
+    <main>
+      <h1>Astro Lazy YouTube Embed</h1>
+
+      <div class="examples">
+        <section>
+          <h2>Minimum required options</h2>
+          <YouTube {...video} />
+        </section>
+
+        <section>
+          <h2>Copy link button</h2>
+          <YouTube {...video} copyLink />
+        </section>
+
+        <section>
+          <h2>Thumbnail and player options</h2>
+          <YouTube
+            title="Frimmerang"
+            videoId="xptCWoB_VCE"
+            thumbnailRes="maxres"
+            thumbnail="3"
+            embedParams={{start: 19, end: 22}}
+          />
+        </section>
+
+        <section>
+          <h2>Other HTML attributes</h2>
+          <YouTube
+            class="rounded-2xl"
+            id="techno"
+            title="Limmy Teaches Techno - Limmy's Homemade Show"
+            videoId="L0C5nyOVTzc"
+          />
+        </section>
+
+        <section>
+          <h2>Default style comparison</h2>
+          <YouTube {...video} copyLink />
+        </section>
+
+        <section>
+          <h2>Real YouTube embed</h2>
+          <iframe
+            class="live-embed"
+            src={`https://www.youtube-nocookie.com/embed/${video.videoId}`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          />
+        </section>
+
+        <section>
+          <h2>Legacy style</h2>
+          <YouTube {...video} legacy />
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    margin: 0;
+    background: #f6f6f6;
+    color: #222;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+  }
+
+  main {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  h1, h2 {
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: .75rem;
+  }
+
+  .examples {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  section {
+    min-width: 0;
+  }
+
+  iframe {
+    display: block;
+  }
+
+  .rounded-2xl {
+    border-radius: 1rem;
+  }
+
+  .live-embed {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+
+  @media (max-width: 800px) {
+    main {
+      padding: 1rem;
+    }
+
+    .examples {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
