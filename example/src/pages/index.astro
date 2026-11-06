@@ -45,6 +45,7 @@ const video = {
           <YouTube
             class="rounded-2xl"
             id="techno"
+            style="border-radius:1rem"
             title="Limmy Teaches Techno - Limmy's Homemade Show"
             videoId="L0C5nyOVTzc"
           />
@@ -70,6 +71,16 @@ const video = {
         <section>
           <h2>Legacy style</h2>
           <YouTube {...video} legacy />
+        </section>
+
+        <section>
+          <h2>4:3 video</h2>
+          <YouTube
+            title="The Count Censored"
+            videoId="6AXPnH0C9UA"
+            aspectRatio={4 / 3}
+            thumbnailRes="hq"
+          />
         </section>
       </div>
     </main>
